@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Your Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            width: 250px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff3b30;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #d32f2f;
+        }
+        .result {
+            font-size: 100px;
+            margin-top: 20px;
+        }
+        .message {
+            font-size: 24px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="app">
+        <h2>Please enter your name:</h2>
+        <input type="text" id="nameInput" placeholder="Type name here..." autofocus>
+        <br>
+        <button onclick="revealSurprise()">Submit</button>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+
+        // Listen for the "Enter" key press inside the input field
+        nameInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                revealSurprise();
+            }
+        });
+
+        function revealSurprise() {
+            const name = nameInput.value.trim();
+            
+            // Validation check to make sure they typed something
+            if (name === "") {
+                alert("Please enter a name first!");
+                return;
+            }
+
+            const appContainer = document.getElementById('app');
+            
+            // Replace the input form with the middle finger emoji and message
+            appContainer.innerHTML = `
+                <div class="result">🖕</div>
+                <div class="message">Hey ${name}, focus on your own things!</div>
+            `;
+        }
+    </script>
+
+</body>
+</html>
